@@ -39,7 +39,7 @@ export const parseSubjectLine = (
     let index = findIndexOfCharCode(line, isEndOfType, 0);
     const type = line.slice(0, index);
     if (!checkString(type, config.type)) {
-        throw new AppError({code: 'InvaildCommitType', data: {line, config}});
+        throw new AppError({code: 'InvalidCommitType', data: {line, config}, message: `Type should be one of ${config.type.join(',')}`});
     }
     let scope: string | null = null;
     if (line.charCodeAt(index) === LeftParenthesis) {
